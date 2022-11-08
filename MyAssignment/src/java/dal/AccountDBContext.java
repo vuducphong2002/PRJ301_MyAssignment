@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.assignment.Account;
+import model.assignment.Lecturer;
 
 /**
  *
@@ -38,6 +39,21 @@ public class AccountDBContext extends DBContext<Account> {
         }
         return null;
     }
+    
+    public Lecturer getLecByAcc(String name) {
+        String sql = "select   lid, lname, username  from Lecturer where username = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Lecturer(rs.getInt("lid"), rs.getString("lname"), rs.getString("username"));
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+    
 
     @Override
     public void insert(Account model) {
@@ -64,4 +80,12 @@ public class AccountDBContext extends DBContext<Account> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public static void main(String[] args) {
+        AccountDBContext accountDBContext = new AccountDBContext();
+        String username = "sonnt";
+        Lecturer lecturer = accountDBContext.getLecByAcc(username);
+        System.out.println(lecturer);
+
+    }
+    
 }

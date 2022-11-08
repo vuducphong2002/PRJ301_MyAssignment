@@ -110,7 +110,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LecturerAttController</servlet-name>
-        <url-pattern>/lecture/takeatt</url-pattern>
+        <url-pattern>/lecturer/att</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

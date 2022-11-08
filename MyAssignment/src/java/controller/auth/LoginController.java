@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.assignment.Account;
+import model.assignment.Lecturer;
 
 /**
  *
@@ -52,11 +53,13 @@ public class LoginController extends HttpServlet {
         Account account = db.get(username, password);
         if(account==null)
         {
-            response.getWriter().println("login failed!");
+            response.getWriter().println("Login Failed!");
         }
         else
         {
+            Lecturer lecturer = db.getLecByAcc(username);
             request.getSession().setAttribute("account", account);
+            request.getSession().setAttribute("lecId", lecturer.getId());
             response.getWriter().println("login successful!");
             response.sendRedirect("/MyAssignment/home");
         }

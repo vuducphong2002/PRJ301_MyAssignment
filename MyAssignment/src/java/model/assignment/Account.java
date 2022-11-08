@@ -32,5 +32,10 @@ public class Account {
     public void setDisplayname(String displayname) {
         this.displayname = displayname;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" + "username=" + username + ", password=" + password + ", displayname=" + displayname + '}';
+    }
     
 }

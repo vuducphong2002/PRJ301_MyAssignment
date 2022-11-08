@@ -66,7 +66,7 @@ public class AttController extends HttpServlet {
         }
         SessionDBContext db = new SessionDBContext();
         db.update(ses);
-        response.sendRedirect("takeatt?id="+ses.getId());
+        response.sendRedirect("att?id="+ses.getId());
     }
 
     /** 

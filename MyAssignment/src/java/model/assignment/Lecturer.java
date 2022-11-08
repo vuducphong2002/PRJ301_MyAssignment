@@ -15,7 +15,25 @@ public class Lecturer {
     private String name;
     private ArrayList<Group> groups = new ArrayList<>();
     private ArrayList<Session> sessions = new ArrayList<>();
+    private String username;
+    
+    public Lecturer() {
+    }
+    
+    public Lecturer(int id, String name, String username) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+    }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     public int getId() {
         return id;
     }
@@ -46,6 +64,11 @@ public class Lecturer {
 
     public void setSessions(ArrayList<Session> sessions) {
         this.sessions = sessions;
+    }
+
+    @Override
+    public String toString() {
+        return "Lecturer{" + "id=" + id + ", name=" + name + ", groups=" + groups + ", sessions=" + sessions + '}';
     }
     
 }
